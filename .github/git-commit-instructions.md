@@ -1,8 +1,8 @@
 ---
 name: git-commit-instructions.md
-description: Create or checkout a new branch, pull latest code, handle safe conflicts, analyze changes, generate commit message, commit, and push to remote
+description: Create or checkout a new branch, pull latest code, handle safe conflicts, analyze changes, generate commit message, commit, push to remote, and open a pull request
 disable-model-invocation: true
-argument-hint: "new-branch-name"
+argument-hint: "new-branch-name" or 
 ---
 
 # Git Checkout New Branch Commit Push Agent
@@ -20,6 +20,7 @@ Create or checkout a new branch using `$ARGUMENTS`, then:
 - stage final changes
 - create exactly one commit
 - push branch to remote
+- create a pull request
 
 If no branch name is provided, stop and ask for a valid new branch name.
 
@@ -52,7 +53,8 @@ feature/cart-validation
 8. Stage changes
 9. Commit changes
 10. Push branch
-11. Return execution summary
+11. Create pull request
+12. Return execution summary
 
 ## Repository Validation
 
@@ -249,6 +251,25 @@ git push --set-upstream origin <branch-name>
   2. resolve safely
   3. retry only if stable
 
+## Create Pull Request
+
+After a successful push, create a pull request from the target branch to the repository default branch.
+
+Preferred command:
+
+```sh
+gh pr create --base main --head <branch-name> --title "<generated-message>" --body "<summary>"
+```
+
+### Pull Request Rules
+
+- create the PR only after push succeeds
+- use the generated commit message or a closely matching title
+- summarize the actual file changes in the body
+- include testing status in the body when known
+- if `gh` is not installed or authentication is missing, report the blocker clearly
+- do not invent reviewers, labels, or metadata unless explicitly requested
+
 ## Final Output
 
 Always report:
@@ -260,6 +281,8 @@ Always report:
 - conflict status
 - commit hash
 - push result
+- pull request result
+- pull request url
 - final repository state
 
 ## Example Workflow
@@ -281,7 +304,8 @@ Execute:
 7. stage files
 8. commit once
 9. push branch
-10. return summary
+10. create pull request
+11. return summary
 
 ## Rules
 
