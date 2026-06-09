@@ -1,7 +1,7 @@
 ---
 name: generate-tests
 description: Write Appium Java TestNG mobile E2E tests with real device validation and self-healing debug loop
-disable-model-invocation: true
+disable-model-invocation: false
 argument-hint: "feature or flow to test"
 ---
 

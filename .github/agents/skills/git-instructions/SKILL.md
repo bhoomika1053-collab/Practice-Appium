@@ -1,8 +1,8 @@
 ---
 name: git-instructions
 description: Create or checkout a new branch, pull latest code, handle safe conflicts, analyze changes, generate commit message, commit, push to remote, and open a pull request
-disable-model-invocation: true
-argument-hint: '"new-branch-name" or leave empty to use the current branch'
+disable-model-invocation: false
+argument-hint: '"JIRA-KEY" or "JIRA-KEY | branch-name" or "branch-name"'
  
 ---
 
@@ -34,9 +34,22 @@ If no branch name is provided, continue on the current branch.
 
 ## Input
 
-The accepted argument is an optional branch name.
+Accepted argument formats:
 
-If no branch name is provided, use the current branch.
+- `JIRA-KEY` (example: `KAN-2`)
+- `JIRA-KEY | branch-name` (example: `KAN-2 | feature/KAN-2-add-single-product-to-cart`)
+- `branch-name` (example: `feature/cart-validation`)
+
+If no argument is provided, use the current branch.
+
+### Jira Branch Naming Rule
+
+If only `JIRA-KEY` is provided:
+
+- branch name may be exactly the Jira key (example: `KAN-2`)
+- or normalized descriptive form: `feature/<JIRA-KEY>-<short-description>`
+
+When both Jira key and branch name are provided, use the provided branch name.
 
 ### Example
 
@@ -112,6 +125,8 @@ If no branch name is provided:
 - never overwrite work
 - stop if checkout is unsafe
 - do not auto-stash changes
+- branch name can be same as Jira key (for example: `KAN-2`)
+- prefer Jira-traceable naming when Jira key is available
 
 ## Pull Latest Code
 
@@ -318,6 +333,7 @@ Execute:
 ## Rules
 
 - Do not generate random branch names
+- Prefer Jira-key-based branch names for traceability
 - Do not skip pull-before-push flow
 - Do not ignore merge conflicts
 - Prefer safe rebase workflow

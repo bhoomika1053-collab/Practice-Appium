@@ -1,7 +1,7 @@
 ---
 name: review-tests
 description: Review Appium Java TestNG mobile test files for quality, best practice compliance, and correctness
-disable-model-invocation: true
+disable-model-invocation: false
 argument-hint: "review test file path or blank for all tests"
 ---
 
