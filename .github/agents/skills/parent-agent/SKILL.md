@@ -76,6 +76,10 @@ Review gate:
 
 - If any `CRITICAL` issue exists, apply fixes then re-run `review-tests` once.
 - If `CRITICAL` issues still exist after one fix iteration, stop before git step and report blocker.
+- After review results are shared, ask user confirmation:
+  - "Do you want me to implement the recommended fixes before git? (yes/no)"
+- If user says `yes`, implement fixes, then re-run `review-tests` once and continue only if no `CRITICAL` issues remain.
+- If user says `no`, skip fix implementation and proceed to Step 4.
 
 ### Step 4: Git Push Workflow
 
@@ -117,6 +121,7 @@ Return a consolidated report with these sections:
 
 - Never reorder the four workflow steps.
 - Never push if unresolved `CRITICAL` review issues remain.
+- Always ask for explicit user confirmation before implementing non-critical review suggestions.
 - Never force push or rewrite history.
 - Never fabricate Jira/TestRail/Git results.
 - Keep traceability from Jira -> TestRail -> Test files -> Commit/PR.
