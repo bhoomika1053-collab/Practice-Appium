@@ -2,7 +2,8 @@
 name: git-commit-instructions.md
 description: Create or checkout a new branch, pull latest code, handle safe conflicts, analyze changes, generate commit message, commit, push to remote, and open a pull request
 disable-model-invocation: true
-argument-hint: "new-branch-name" or 
+argument-hint: '"new-branch-name" or leave empty to use the current branch'
+ 
 ---
 
 # Git Checkout New Branch Commit Push Agent
@@ -22,7 +23,7 @@ Create or checkout a new branch using `$ARGUMENTS`, then:
 - push branch to remote
 - create a pull request
 
-If no branch name is provided, stop and ask for a valid new branch name.
+If no branch name is provided, continue on the current branch.
 
 ### Do not
 
@@ -33,7 +34,9 @@ If no branch name is provided, stop and ask for a valid new branch name.
 
 ## Input
 
-The only accepted argument is the branch name.
+The accepted argument is an optional branch name.
+
+If no branch name is provided, use the current branch.
 
 ### Example
 
@@ -82,13 +85,13 @@ Validate that:
 
 ## Branch Handling
 
-If branch does not exist locally:
+If a branch name is provided and it does not exist locally:
 
 ```sh
 git checkout -b <branch-name>
 ```
 
-If branch already exists locally:
+If a branch name is provided and it already exists locally:
 
 ```sh
 git checkout <branch-name>
@@ -97,6 +100,11 @@ git checkout <branch-name>
 If a remote branch exists:
 
 - track it safely if appropriate
+
+If no branch name is provided:
+
+- stay on the current branch
+- do not ask for confirmation just to proceed
 
 ### Branch Rules
 
