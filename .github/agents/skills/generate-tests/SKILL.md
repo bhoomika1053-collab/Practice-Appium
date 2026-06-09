@@ -36,7 +36,7 @@ Generate Appium Java TestNG tests for: `$ARGUMENTS`
 - Follow Page Object Model if the project already uses it
 - Use only verified selectors — never guess if source or inspection is available
 
-## Step 2: Validate on Real Device / Emulator
+## Step 2: Validate on  Emulator
 - Use **Appium Inspector** or a real emulator/device session
 - Navigate through the relevant app screens involved in the test
 - Visually verify:
