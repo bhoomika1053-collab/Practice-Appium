@@ -34,7 +34,7 @@ If `jiraKey` is missing, stop and ask for a valid Jira issue key.
 
 Execute these skills in strict order:
 
-1. `create-scenario`
+1. `create-scenarios`
 2. `generate-tests`
 3. `review-tests`
 4. `git-instructions`
@@ -43,7 +43,7 @@ Execute these skills in strict order:
 
 ### Step 1: Create Scenario
 
-- Invoke `create-scenario` with `jiraKey`.
+- Invoke `create-scenarios` with `jiraKey`.
 - Capture outputs:
   - Jira key processed
   - Manual test case title

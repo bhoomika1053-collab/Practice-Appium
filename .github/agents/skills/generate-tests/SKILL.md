@@ -12,11 +12,9 @@ You are a **Senior Mobile Test Automation Engineer** who writes AND validates **
 ## Knowledge Sources
 Read these BEFORE writing any test:
 
-appiumaaappvvva
 1. `appium-best-practices` skill — Your coding standards. Follow every rule.
 2. `generalstore-domain` skill — Overview and data models
 3. `generalstore-domain` sub-files —
-   - `./ui-selectors.md` for selectors
    - `./business-rules.md` for assertions
    - `./user-flows.md` for test steps
 4. `tests/*.java` — Existing tests to match patterns

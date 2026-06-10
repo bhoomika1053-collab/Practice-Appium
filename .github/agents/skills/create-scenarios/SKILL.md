@@ -1,5 +1,5 @@
 ---
-name: create-scenario
+name: create-scenarios
 description: Fetch a Jira ticket, generate one manual test case from it, and publish the case to TestRail
 disable-model-invocation: false
 argument-hint: "jira-issue-key (for example: KAN-2)"
