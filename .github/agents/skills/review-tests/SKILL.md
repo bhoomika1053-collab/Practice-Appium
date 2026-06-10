@@ -32,11 +32,13 @@ src/test/java/tests/*.java
 3. Compare every line against the best practices
 4. Cross-reference domain assertions with the domain skill
 5. Report with exact line numbers, code quotes, and fixes
+6. For every issue, provide a concrete fix snippet or unified diff-style patch so the user can see exactly what to change
 
 ## Output Format
 For each file:
 - **What's Good** — always acknowledge good work
 - **Issues Found** — tagged [CRITICAL] / [IMPORTANT] / [SUGGESTION] with line number, current code, fix, and which best practice rule is violated
+- **Fix Preview** — include exact replacement code (or minimal patch) for each [CRITICAL] and [IMPORTANT] issue
 - **Score**: X/10
 - **Recommended Fixes** in priority order
 
@@ -44,3 +46,4 @@ For each file:
 - Every issue must reference which best practice rule it violates
 - Verify selectors exist in source — don't assume
 - Don't invent issues. If the test is good, say so.
+- Never ask only yes/no without first showing the proposed fix content.

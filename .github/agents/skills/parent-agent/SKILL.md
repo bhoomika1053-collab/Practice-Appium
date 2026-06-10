@@ -74,12 +74,13 @@ If generation fails, stop workflow and report failure reason.
   - Issues by severity (`CRITICAL`, `IMPORTANT`, `SUGGESTION`)
   - Score per file
   - Recommended fixes
+  - Concrete fix preview (exact code replacements or patch snippets)
 
 Review gate:
 
 - If any `CRITICAL` issue exists, apply fixes then re-run `review-tests` once.
 - If `CRITICAL` issues still exist after one fix iteration, stop before git step and report blocker.
-- After review results are shared, ask user confirmation:
+- After review results and concrete fix previews are shared, ask user confirmation:
   - "Do you want me to implement the recommended fixes before git? (yes/no)"
 - If user says `yes`, implement fixes, then re-run `review-tests` once and continue only if no `CRITICAL` issues remain.
 - If user says `no`, skip fix implementation and proceed to Step 4.
