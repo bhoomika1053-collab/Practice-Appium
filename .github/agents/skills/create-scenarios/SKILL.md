@@ -2,7 +2,8 @@
 name: create-scenarios
 description: Fetch a Jira ticket, generate one manual test case from it, and publish the case to TestRail
 disable-model-invocation: false
-argument-hint: "jira-issue-key (for example: KAN-2)"
+user-invocable: false
+argument-hint: "jira-issue-key or Fetch Jira- jira-issue-key (example: Fetch Jira- KAN-2)"
 ---
 
 # Jira To TestRail Test Case Agent
@@ -19,6 +20,15 @@ Read these BEFORE writing the test case:
 Create one manual test case from Jira issue: `$ARGUMENTS`
 
 If no Jira issue key is provided, stop and ask for a valid issue key (for example: `KAN-2`).
+
+Accepted input formats:
+
+- `KAN-2`
+- `Fetch Jira- KAN-2`
+
+Parsing rule:
+
+- If input starts with `Fetch Jira-`, strip that prefix and extract the Jira key before fetching Jira.
 
 ## Required Workflow
 
