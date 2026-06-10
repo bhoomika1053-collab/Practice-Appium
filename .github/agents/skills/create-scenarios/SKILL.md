@@ -44,7 +44,7 @@ Parsing rule:
 	- Priority and type
 4. Validate that every expected result maps to at least one acceptance criterion.
 5. Publish the test case to TestRail using MCP TestRail tools.
-6. Return the created TestRail case ID and Jira issue key in the final response.
+6. Return the created TestRail case ID, TestRail case URL, and Jira issue key in the final response.
 
 ## Manual Test Case Format
 Use this structure for the generated case content:
@@ -80,6 +80,7 @@ Always report:
 - Manual test case title generated
 - TestRail case ID created
 - Confirmation that acceptance criteria were fully mapped
+- TestRail case URL (place this as the last line of the final output)
 
 ## Rules
 - Do not generate a full scenario suite in this skill.

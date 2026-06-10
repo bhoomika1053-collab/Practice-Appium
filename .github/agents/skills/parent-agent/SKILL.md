@@ -103,6 +103,7 @@ Return a consolidated report with these sections:
 1. Scenario Creation
   - Jira key
   - TestRail case ID
+  - TestRail case URL
   - Scenario title
 2. Test Generation
   - Test files created/updated
@@ -118,6 +119,8 @@ Return a consolidated report with these sections:
   - Commit hash
   - Push result
   - PR result and URL
+
+At the end of the consolidated report, always add the TestRail case URL as the final line.
 
 ## Non-Negotiable Rules
 
