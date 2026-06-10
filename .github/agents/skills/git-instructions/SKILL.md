@@ -1,7 +1,7 @@
 ---
 name: git-instructions
 description: Create or checkout a new branch, pull latest code, handle safe conflicts, analyze changes, generate commit message, commit, push to remote, and open a pull request
-disable-model-invocation: true
+disable-model-invocation: false
 argument-hint: '"new-branch-name" or leave empty to use the current branch'
  
 ---
