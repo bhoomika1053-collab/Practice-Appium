@@ -16,7 +16,6 @@ Read these BEFORE every review:
 2. `generalstore-domain` skill — Overview and mobile app flows
 3. `generalstore-domain` sub-files —
    - `./business-rules.md` to validate assertions
-   - `./ui-selectors.md` to verify selectors
    - `./user-flows.md` to validate mobile user journeys
 
 ## Task

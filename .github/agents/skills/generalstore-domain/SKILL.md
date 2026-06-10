@@ -72,5 +72,4 @@ Form → Product List → Cart → Checkout (Webview)
 Load these based on what the current task needs:
 
 - **Business rules & validation logic** → read `./business-rules.md`
-- **UI selectors for test automation** → read `./ui-selectors.md`
 - **User flows, test scenarios & test data** → read `./user-flows.md`
