@@ -1,8 +1,8 @@
 ---
 name: parent-agent
-description: Orchestrate end-to-end QA delivery by creating scenario from Jira, generating Appium tests, reviewing tests, and executing safe git push workflow
+description: "Use when the user provides a Jira key or asks 'Fetch Jira- <KEY>' and expects the end-to-end QA workflow: fetch Jira details, create scenario, generate Appium tests, review tests, and execute the safe git push workflow"
 disable-model-invocation: false
-argument-hint: "JIRA-KEY | optional-branch-name"
+argument-hint: "jira-issue-key or Fetch Jira- jira-issue-key"
 ---
 
 # Parent QA Delivery Agent
@@ -21,12 +21,15 @@ You must execute this sequence in order, without skipping steps:
 Parse `$ARGUMENTS` as:
 
 - `jiraKey` (required) -> example: `KAN-2`
-- `branchName` (optional) -> example: `feature/kan-2-cart-validation`
 
 Accepted formats:
 
 - `KAN-2`
-- `KAN-2 | feature/kan-2-cart-validation`
+- `Fetch Jira- KAN-2`
+
+Parsing rule:
+
+- If input starts with `Fetch Jira-`, strip that prefix and extract the Jira key.
 
 If `jiraKey` is missing, stop and ask for a valid Jira issue key.
 
@@ -83,9 +86,7 @@ Review gate:
 
 ### Step 4: Git Push Workflow
 
-- Invoke `git-instructions` with:
-  - `branchName` if provided
-  - otherwise empty argument to continue on current branch
+- Invoke `git-instructions` with empty argument to continue on current branch.
 - Ensure safe git workflow is followed:
   - pull/rebase
   - one meaningful commit
