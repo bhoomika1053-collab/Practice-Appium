@@ -62,10 +62,22 @@ If scenario creation fails, stop workflow and report failure reason.
 - Build generation prompt from Step 1 output.
 - Include Jira key, manual test title, and acceptance criteria intent.
 - Invoke `generate-tests` with this prompt.
+- `generate-tests` MUST complete its full Write -> Run -> Debug -> Fix loop, which means the
+  test is actually executed on the local emulator (via `ci-run.ps1` or `mvn test -Dtest=<Class>`)
+  and iterated on until it passes locally — do NOT treat generation as "file written" only.
 - Capture outputs:
   - Generated/updated test file path(s)
   - Covered business rules
+  - Local run command used and Maven `Tests run / Failures / Errors` summary
   - Validation status (pass/fail)
+
+Local gate rule:
+
+- Do not proceed to Step 3 (review) until the generated test has actually run and PASSED
+  locally. If it fails, fix and re-run locally (up to 3 attempts) before moving on.
+- Never skip the local run and jump to the Jenkins gate.
+- Do not auto-fix infrastructure issues (emulator/Appium won't start) or weaken the test
+  just to pass — report those instead.
 
 If generation fails, stop workflow and report failure reason.
 
@@ -156,6 +168,7 @@ At the end of the consolidated report, always add the TestRail case URL as the f
 
 - Never reorder the five workflow steps.
 - Never push if unresolved `CRITICAL` review issues remain.
+- During Step 2, always run the generated test locally and make it pass before review — never skip the local run and jump straight to Jenkins.
 - Never push if the Jenkins CI gate did not return `SUCCESS`.
 - On a failed Jenkins build, fix the cause and re-run (up to 3 attempts) before giving up.
 - Run Jenkins (Step 4) after review and before git — never skip the CI gate.
