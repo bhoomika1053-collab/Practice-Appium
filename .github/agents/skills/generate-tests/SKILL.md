@@ -48,8 +48,7 @@ Generate Appium Java TestNG tests for: `$ARGUMENTS`
 ## Step 3: Run the Test
 - Execute:
   `mvn test -Dtest=<TestClassName>`
-  or
-  `gradle test --tests <TestClassName>`
+  
 - Capture the full console output and Appium server logs
 
 ## Step 4: If Tests Fail — Debug & Fix (Three-Way Check)
@@ -147,7 +146,7 @@ Generate tests for mobile flows such as:
 src/test/java
 │
 ├── base
-│   └── BaseTest.java
+│   └── BaseTest.java          # driver setUp()/tearDown() lives here
 │
 ├── pages
 │   ├── LoginPage.java
@@ -164,7 +163,5 @@ src/test/java
 │   └── WebViewTests.java
 │
 └── utils
-    ├── DriverFactory.java
-    ├── WaitUtils.java
-    ├── GestureUtils.java
-    └── TestDataUtils.java
+    └── ConfigReader.java      # reads config.properties (add helpers here as needed)
+```
