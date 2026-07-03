@@ -6,4 +6,9 @@
             <class name="tests.SmokeTest"/>
         </classes>
     </test>
+    <test name="Cart Tests">
+        <classes>
+            <class name="tests.AddSingleProductToCartTest"/>
+        </classes>
+    </test>
 </suite>
