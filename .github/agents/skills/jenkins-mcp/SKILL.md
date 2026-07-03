@@ -2,7 +2,7 @@
 name: jenkins-mcp
 description: "Run the just-changed/generated Appium test in the local Jenkins 'mcp' job, wait for the build result, and report pass/fail. Acts as the CI gate that must pass before any git push."
 disable-model-invocation: false
-argument-hint: "optional TEST_CASE, e.g. 'KAN2AddSingleProductToCartTest#addSingleProductToCart' or blank for the full testng.xml suite"
+argument-hint: "optional TEST_CASE, e.g. 'AddSingleProductToCartTest#addSingleProductToCart' or blank for the full testng.xml suite"
 ---
 
 # Jenkins CI Runner (Gate)
@@ -28,7 +28,7 @@ happen after a Jenkins `SUCCESS`.
 
 Parse `$ARGUMENTS` as an optional `TEST_CASE`:
 
-- If a test identifier is provided (e.g. `KAN2AddSingleProductToCartTest#addSingleProductToCart`), run only that.
+- If a test identifier is provided (e.g. `AddSingleProductToCartTest#addSingleProductToCart`), run only that.
 - If empty, run the full suite.
 
 When invoked by `parent-agent`, the `TEST_CASE` should be derived from the test file/method

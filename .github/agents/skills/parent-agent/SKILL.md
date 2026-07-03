@@ -100,7 +100,7 @@ Review gate:
 ### Step 4: Jenkins CI Gate
 
 - Invoke `jenkins-mcp` with the `TEST_CASE` derived from the test file/method generated in Step 2
-  (e.g. `KAN2AddSingleProductToCartTest#addSingleProductToCart`).
+  (e.g. `AddSingleProductToCartTest#addSingleProductToCart`).
 - Capture outputs:
   - Jenkins build number and URL
   - Build result (`SUCCESS` / `FAILURE` / `UNSTABLE` / `ABORTED`)
